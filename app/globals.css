@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design system — "المسار" (the right path)
+   Palette derived from the clinic's own lotus mark: a fuchsia →
+   purple → iris gradient (mother & child). Deep royal plum is the
+   trustworthy workhorse; fuchsia is the hopeful accent, used with
+   restraint. Token names below are kept for continuity — read
+   "pine" as plum and "honey" as fuchsia.
+   ============================================================ */
+
+@theme {
+  /* Surfaces */
+  --color-cream: #faf6f7; /* page background — warm off-white, a whisper of rose */
+  --color-sand: #f4ecf3; /* alternating section background — pale lilac */
+  --color-card: #ffffff; /* cards */
+  --color-line: #ecdfe9; /* rosy hairline borders */
+
+  /* Ink */
+  --color-ink: #251826; /* primary text — plum-charcoal */
+  --color-muted: #6c5f71; /* secondary text — muted mauve */
+
+  /* Plum — primary brand (kept under the "pine" name) */
+  --color-pine: #6d2b86;
+  --color-pine-dark: #57206c;
+  --color-pine-deep: #3d1550;
+  --color-pine-soft: #f3e9f8; /* lilac tint for chips / icon wells */
+
+  /* Fuchsia — accent / hope (kept under the "honey" name) */
+  --color-honey: #d6177e;
+  --color-honey-deep: #a8125f;
+  --color-honey-soft: #fce7f1;
+
+  /* Iris — the logo's periwinkle, for gradients & subtle highlights */
+  --color-iris: #5b63ca;
+  --color-iris-soft: #e9eafb;
+
+  /* Rose — the human whisper, used sparingly */
+  --color-rose: #c24d86;
+  --color-rose-soft: #f7e6ef;
+
+  /* Type */
+  --font-display: var(--font-el-messiri), "Segoe UI", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-body: var(--font-plex-ar), "Segoe UI", ui-sans-serif, system-ui,
+    sans-serif;
+
+  /* Elevation — soft, low-contrast, plum-tinted */
+  --shadow-soft: 0 1px 2px rgba(61, 21, 80, 0.05),
+    0 10px 30px -18px rgba(61, 21, 80, 0.18);
+  --shadow-card: 0 1px 3px rgba(61, 21, 80, 0.06),
+    0 24px 48px -28px rgba(61, 21, 80, 0.22);
+  --shadow-lift: 0 2px 6px rgba(61, 21, 80, 0.07),
+    0 32px 60px -30px rgba(61, 21, 80, 0.28);
+
+  /* Radii */
+  --radius-xl2: 1.5rem;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------ */
+/* Base                                                          */
+/* ------------------------------------------------------------ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+    color: var(--color-ink);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Latin numerals & terms sit slightly tighter inside Arabic runs */
+  .num {
+    font-family: var(--font-body);
+    font-feature-settings: "tnum" 1;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-pine);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-honey-soft);
+    color: var(--color-ink);
+  }
+
+  /* Keep phone links legible & neutral */
+  a {
+    color: inherit;
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* Reusable primitives                                           */
+/* ------------------------------------------------------------ */
+
+@layer components {
+  /* Waypoint eyebrow — the signature "you are on a path" marker.
+     A dot on a short line + a label. Meaningful, not decorative. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--color-pine);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: color-mix(in oklab, var(--color-pine) 45%, transparent);
+  }
+  .eyebrow--honey {
+    color: var(--color-honey-deep);
+  }
+  .eyebrow--honey::before {
+    background: color-mix(in oklab, var(--color-honey-deep) 55%, transparent);
+  }
+  .eyebrow--light {
+    color: color-mix(in oklab, var(--color-honey) 88%, white);
+  }
+  .eyebrow--light::before {
+    background: color-mix(in oklab, var(--color-honey) 60%, transparent);
+  }
+
+  /* Prose for article / long-form bodies */
+  .prose-ar {
+    color: var(--color-ink);
+    font-size: 1.075rem;
+    line-height: 1.95;
+  }
+  .prose-ar > * + * {
+    margin-top: 1.15rem;
+  }
+  .prose-ar h2 {
+    font-size: 1.6rem;
+    margin-top: 2.6rem;
+    margin-bottom: 0.2rem;
+    scroll-margin-top: 6rem;
+  }
+  .prose-ar h3 {
+    font-size: 1.25rem;
+    margin-top: 1.9rem;
+    scroll-margin-top: 6rem;
+  }
+  .prose-ar p {
+    color: color-mix(in oklab, var(--color-ink) 88%, transparent);
+  }
+  .prose-ar ul {
+    list-style: none;
+    padding-inline-start: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .prose-ar li {
+    position: relative;
+    padding-inline-start: 1.6rem;
+    color: color-mix(in oklab, var(--color-ink) 88%, transparent);
+  }
+  .prose-ar li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.15rem;
+    top: 0.72em;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--color-honey);
+    box-shadow: 0 0 0 4px var(--color-honey-soft);
+  }
+  .prose-ar strong {
+    color: var(--color-pine);
+    font-weight: 700;
+  }
+  .prose-ar a {
+    color: var(--color-pine);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in oklab, var(--color-pine) 35%, transparent);
+  }
+}
+
+/* ------------------------------------------------------------ */
+/* Motion — subtle fade-up, reduced-motion aware                */
+/* ------------------------------------------------------------ */
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Journey path draw-in */
+  .path-draw {
+    stroke-dasharray: var(--len, 1000);
+    stroke-dashoffset: var(--len, 1000);
+    transition: stroke-dashoffset 1.6s var(--ease-out-soft);
+  }
+  .path-draw.is-visible {
+    stroke-dashoffset: 0;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--color-pine) 6%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .path-draw {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
