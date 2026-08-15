@@ -10,37 +10,44 @@ function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const [n, setN] = useState(0);
 
+  // Depend on the stable `value` string (not the freshly-built `match` array,
+  // which changes identity every render and would restart the animation on
+  // each frame). Run the observer once; animate once; clean up the rAF.
   useEffect(() => {
-    if (!match) return;
-    const target = parseInt(match[2], 10);
+    const m = value.match(/^([^\d]*)(\d+)(.*)$/);
+    if (!m) return;
+    const target = parseInt(m[2], 10);
     const el = ref.current;
     if (!el) return;
+
+    let raf = 0;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          io.unobserve(e.target);
-          if (reduce) {
-            setN(target);
-            return;
-          }
-          const start = performance.now();
-          const dur = 1100;
-          const tick = (now: number) => {
-            const p = Math.min((now - start) / dur, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setN(Math.round(eased * target));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        });
+        if (!entries[0]?.isIntersecting) return;
+        io.disconnect();
+        if (reduce) {
+          setN(target);
+          return;
+        }
+        const start = performance.now();
+        const dur = 1100;
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          setN(Math.round(eased * target));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
       },
       { threshold: 0.5 },
     );
     io.observe(el);
-    return () => io.disconnect();
-  }, [match]);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
 
   if (!match) return <span>{value}</span>;
   return (

@@ -49,7 +49,8 @@ export function Header() {
   };
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
@@ -216,8 +217,12 @@ export function Header() {
           </button>
         </div>
       </div>
+      </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — a sibling of <header> (NOT a child): the header's
+          backdrop-blur is a `backdrop-filter`, which would make it the
+          containing block for this `position: fixed` element and clamp it to
+          the header's height. As a viewport-level sibling it fills the screen. */}
       <div
         className={cn(
           "fixed inset-0 z-50 xl:hidden",
@@ -358,6 +363,6 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
