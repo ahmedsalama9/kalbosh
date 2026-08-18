@@ -4,13 +4,13 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Icon } from "@/components/ui/Icon";
 import { BookingForm } from "@/components/appointment/BookingForm";
 import { PhoneLink } from "@/components/ui/cta";
-import { clinic, phones } from "@/lib/site";
+import { clinics, phones } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "احجزي موعدك",
   description:
-    "احجزي موعدك مع د. محمد كلبوش لعلاج تأخر الحمل والحقن المجهري في طنطا. املئي نموذج الحجز أو تواصلي مباشرة عبر واتساب.",
+    "احجزي موعدك مع د. محمد كلبوش لعلاج تأخر الحمل والحقن المجهري في عيادتي القاهرة (التجمع الخامس) وطنطا. املئي نموذج الحجز أو تواصلي مباشرة عبر واتساب.",
   path: "/appointment",
 });
 
@@ -30,21 +30,35 @@ export default function AppointmentPage() {
           <aside className="space-y-4">
             <div className="rounded-2xl border border-line bg-card p-6 shadow-soft">
               <h2 className="text-base font-bold text-ink">معلومات العيادة</h2>
-              <ul className="mt-4 space-y-4 text-sm">
-                <li className="flex gap-3">
-                  <Icon name="pin" size={20} className="mt-0.5 shrink-0 text-honey-deep" />
-                  <span className="leading-relaxed text-ink/85">
-                    {clinic.addressLines.join("، ")}
-                  </span>
-                </li>
-                <li className="flex gap-3">
-                  <Icon name="clock" size={20} className="mt-0.5 shrink-0 text-honey-deep" />
-                  <span className="leading-relaxed text-ink/85">
-                    {clinic.hours.lines.join(" — ")}
-                  </span>
-                </li>
+              <ul className="mt-4 space-y-5 text-sm">
+                {clinics.map((c) => (
+                  <li key={c.key} className="space-y-2 border-t border-line pt-3 first:border-0 first:pt-0">
+                    <p className="font-bold text-ink">عيادة {c.city}</p>
+                    <span className="flex gap-3">
+                      <Icon name="pin" size={20} className="mt-0.5 shrink-0 text-honey-deep" />
+                      <span className="leading-relaxed text-ink/85">
+                        {c.addressLines.join("، ")}
+                      </span>
+                    </span>
+                    <span className="flex gap-3">
+                      <Icon name="clock" size={20} className="mt-0.5 shrink-0 text-honey-deep" />
+                      <span className="leading-relaxed text-ink/85">
+                        {c.hoursLines.join(" — ")}
+                      </span>
+                    </span>
+                    <span className="flex items-center justify-between">
+                      <span className="text-muted">{c.booking.label}</span>
+                      <PhoneLink
+                        tel={c.booking.tel}
+                        display={c.booking.display}
+                        source={`appointment-aside-${c.key}`}
+                        className="num font-semibold text-pine hover:text-honey-deep"
+                      />
+                    </span>
+                  </li>
+                ))}
                 <li className="space-y-2 border-t border-line pt-3">
-                  {[phones.booking, phones.doctor, phones.emergency].map((p) => (
+                  {[phones.doctor, phones.emergency].map((p) => (
                     <div key={p.tel} className="flex items-center justify-between">
                       <span className="text-muted">{p.label}</span>
                       <PhoneLink

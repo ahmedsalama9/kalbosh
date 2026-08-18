@@ -10,9 +10,14 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "تواصل معنا",
   description:
-    "عيادة د. محمد كلبوش في طنطا — شارع القاضي مع شارع البحر، فوق بنك دبي الإمارات الوطني، الدور الخامس. أرقام الحجز والطوارئ والمواعيد.",
+    "عيادتا د. محمد كلبوش — القاهرة: شارع التسعين الشمالي، التجمع الخامس (ميديكال بارك بريمير)، وطنطا: شارع القاضي مع شارع البحر فوق بنك دبي الإمارات الوطني. أرقام الحجز والطوارئ والمواعيد.",
   path: "/contact",
-  keywords: ["دكتور تأخر الحمل طنطا", "عيادة نساء وتوليد طنطا", "تواصل"],
+  keywords: [
+    "دكتور تأخر الحمل طنطا",
+    "دكتور تأخر الحمل التجمع الخامس",
+    "عيادة نساء وتوليد طنطا",
+    "تواصل",
+  ],
 });
 
 export default function ContactPage() {
@@ -21,7 +26,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="تواصلي معنا"
         title="نحن هنا لمساعدتك"
-        subtitle="كل طرق التواصل مع عيادة د. محمد كلبوش في طنطا — الحجز، الاستفسار، والموقع."
+        subtitle="كل طرق التواصل مع عيادتي د. محمد كلبوش في القاهرة وطنطا — الحجز، الاستفسار، والموقع."
         crumbs={[{ name: "تواصل معنا", path: "/contact" }]}
       />
 
@@ -45,8 +50,10 @@ export default function ContactPage() {
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-ink">موقع العيادة</h2>
-              <p className="mt-2 text-muted">طنطا – شارع القاضي مع شارع البحر.</p>
+              <h2 className="text-xl font-bold text-ink">مواقع العيادات</h2>
+              <p className="mt-2 text-muted">
+                القاهرة – التجمع الخامس، وطنطا – شارع القاضي مع شارع البحر.
+              </p>
               <div className="mt-5">
                 <MapPlaceholder className="h-full" />
               </div>

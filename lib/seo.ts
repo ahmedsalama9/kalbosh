@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteUrl, doctor, clinic, phones } from "./site";
+import { siteUrl, doctor, clinic, clinics, phones } from "./site";
 
 const defaultTitle = `${doctor.name} | علاج تأخر الحمل والحقن المجهري في طنطا`;
 const defaultDescription =
@@ -70,7 +70,24 @@ export function physicianJsonLd() {
       addressLocality: doctor.city,
       addressCountry: "EG",
     },
-    areaServed: { "@type": "City", name: doctor.city },
+    areaServed: clinics.map((c) => ({ "@type": "City", name: c.city })),
+    location: clinics.map((c) => ({
+      "@type": "MedicalClinic",
+      name: `عيادة ${doctor.name} – ${c.city}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: c.addressShort,
+        addressLocality: c.city,
+        addressCountry: "EG",
+      },
+      telephone: c.booking.tel,
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [...c.schedule.days],
+        opens: c.schedule.opens,
+        closes: c.schedule.closes,
+      },
+    })),
     availableService: [
       "علاج تأخر الحمل",
       "الحقن المجهري",
@@ -79,12 +96,12 @@ export function physicianJsonLd() {
       "علاج ضعف التبويض",
       "علاج تكيس المبايض",
     ].map((name) => ({ "@type": "MedicalProcedure", name })),
-    openingHoursSpecification: {
+    openingHoursSpecification: clinics.map((c) => ({
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [...clinic.hours.days],
-      opens: clinic.hours.opens,
-      closes: clinic.hours.closes,
-    },
+      dayOfWeek: [...c.schedule.days],
+      opens: c.schedule.opens,
+      closes: c.schedule.closes,
+    })),
   };
 }
 

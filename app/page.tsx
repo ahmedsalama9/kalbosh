@@ -8,7 +8,6 @@ import { IvfCallout } from "@/components/home/IvfCallout";
 import { StartHere } from "@/components/home/StartHere";
 import { TreatmentJourneySection } from "@/components/home/TreatmentJourneySection";
 import { InfertilityExplain } from "@/components/home/InfertilityExplain";
-import { SuccessStoriesSection } from "@/components/home/SuccessStoriesSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { VideosSection } from "@/components/home/VideosSection";
 import { FAQSection } from "@/components/home/FAQSection";
@@ -30,7 +29,6 @@ export default function Home() {
       <StartHere />
       <TreatmentJourneySection />
       <InfertilityExplain />
-      <SuccessStoriesSection />
       <TestimonialsSection />
       <VideosSection />
       <FAQSection />

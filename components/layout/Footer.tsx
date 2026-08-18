@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  clinic,
+  clinics,
   doctor,
   footerNav,
   phones,
@@ -64,17 +64,34 @@ export function Footer() {
               العيادة
             </h2>
             <ul className="mt-4 space-y-4 text-sm text-cream/80">
-              <li className="flex gap-3">
-                <Icon name="pin" size={20} className="mt-0.5 shrink-0 text-honey" />
-                <span>{clinic.addressLines.join("، ")}</span>
-              </li>
-              <li className="flex gap-3">
-                <Icon name="clock" size={20} className="mt-0.5 shrink-0 text-honey" />
-                <span>{clinic.hours.lines.join(" — ")}</span>
-              </li>
+              {clinics.map((c) => (
+                <li key={c.key} className="space-y-2">
+                  <p className="font-semibold text-cream">عيادة {c.city}</p>
+                  <span className="flex gap-3">
+                    <Icon name="pin" size={20} className="mt-0.5 shrink-0 text-honey" />
+                    <span>{c.addressLines.join("، ")}</span>
+                  </span>
+                  <span className="flex gap-3">
+                    <Icon name="clock" size={20} className="mt-0.5 shrink-0 text-honey" />
+                    <span>{c.hoursLines.join(" — ")}</span>
+                  </span>
+                  <span className="flex items-center gap-3">
+                    <Icon name="calendar" size={20} className="shrink-0 text-honey" />
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="text-cream/55">{c.booking.label}:</span>
+                      <PhoneLink
+                        tel={c.booking.tel}
+                        display={c.booking.display}
+                        source={`footer-${c.key}`}
+                        className="num font-semibold text-cream transition-colors hover:text-honey"
+                      />
+                    </span>
+                  </span>
+                </li>
+              ))}
               <li className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 <Icon name="phone" size={20} className="shrink-0 text-honey" />
-                {Object.values(phones).map((p) => (
+                {[phones.doctor, phones.emergency].map((p) => (
                   <span key={p.tel} className="inline-flex items-center gap-1.5">
                     <span className="text-cream/55">{p.label}:</span>
                     <PhoneLink

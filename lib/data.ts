@@ -3,7 +3,6 @@ import type {
   Feature,
   JourneyStep,
   Service,
-  SuccessStory,
   Testimonial,
   VideoItem,
 } from "./types";
@@ -542,7 +541,7 @@ export const faqs: FAQ[] = [
 ];
 
 /* ============================================================
-   Testimonials & success stories (placeholder — CMS-ready)
+   Testimonials (placeholder — CMS-ready)
    ============================================================ */
 
 export const testimonials: Testimonial[] = [
@@ -568,27 +567,6 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export const successStories: SuccessStory[] = [
-  {
-    title: "بداية بعد التقييم الصحيح",
-    summary:
-      "قصة توضح كيف غيّر التشخيص الدقيق مسار العلاج قبل التفكير في أي خطوة متقدمة.",
-    treatment: "علاج تأخر الحمل",
-  },
-  {
-    title: "خطة بديلة بعد محاولة سابقة",
-    summary:
-      "مراجعة تفاصيل محاولة سابقة ووضع خطة جديدة مناسبة للحالة.",
-    treatment: "الحقن المجهري",
-    hasVideo: true,
-  },
-  {
-    title: "علاج بدون اللجوء للحقن المجهري",
-    summary:
-      "حالة كان العلاج فيها بخطوات أبسط بناءً على نتيجة التقييم.",
-    treatment: "تنشيط التبويض",
-  },
-];
 
 /* ============================================================
    Videos — external links to Facebook Reels (no iframe dependency)
@@ -599,41 +577,49 @@ export const videos: VideoItem[] = [
     title: "هل كل تأخر حمل يحتاج حقن مجهري؟",
     topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/1036259988818045?locale=ar_AR",
+    poster: "/images/videos/1036259988818045.jpg",
   },
   {
     title: "الخطوة الأولى في علاج تأخر الحمل",
     topic: "التشخيص",
     url: "https://www.facebook.com/reel/27624012037230595?locale=ar_AR",
+    poster: "/images/videos/27624012037230595.jpg",
   },
   {
     title: "تكيس المبايض وتأخر الحمل",
     topic: "تكيس المبايض",
     url: "https://www.facebook.com/reel/2634773970313141?locale=ar_AR",
+    poster: "/images/videos/2634773970313141.jpg",
   },
   {
     title: "ضعف التبويض وطرق التعامل معه",
     topic: "التبويض",
     url: "https://www.facebook.com/reel/27051603227795503?locale=ar_AR",
+    poster: "/images/videos/27051603227795503.jpg",
   },
   {
     title: "مخزون المبيض ومتى نقيسه",
     topic: "مخزون المبيض",
     url: "https://www.facebook.com/reel/2572420866473477?locale=ar_AR",
+    poster: "/images/videos/2572420866473477.jpg",
   },
   {
     title: "بطانة الرحم المهاجرة والخصوبة",
     topic: "بطانة الرحم",
     url: "https://www.facebook.com/reel/1884593508801743?locale=ar_AR",
+    poster: "/images/videos/1884593508801743.jpg",
   },
   {
     title: "تجميد البويضات والحفاظ على الخصوبة",
     topic: "تجميد البويضات",
     url: "https://www.facebook.com/reel/862501359633325?locale=ar_AR",
+    poster: "/images/videos/862501359633325.jpg",
   },
   {
     title: "أسباب فشل الحقن المجهري",
     topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/1328072741656469?locale=ar_AR",
+    poster: "/images/videos/1328072741656469.jpg",
   },
 ];
 

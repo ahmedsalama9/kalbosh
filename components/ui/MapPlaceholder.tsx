@@ -1,4 +1,4 @@
-import { clinic } from "@/lib/site";
+import { clinics } from "@/lib/site";
 import { Icon } from "./Icon";
 import { cn } from "@/lib/utils";
 
@@ -15,14 +15,22 @@ export function MapPlaceholder({ className }: { className?: string }) {
       )}
       style={{ minHeight: "18rem" }}
       role="img"
-      aria-label={`موقع العيادة: ${clinic.addressShort}`}
+      aria-label={`مواقع العيادات: ${clinics
+        .map((c) => c.addressShort)
+        .join(" — ")}`}
     >
       <div className="pointer-events-none absolute inset-0 bg-grain opacity-60" />
-      <div className="relative flex flex-col items-center gap-3 px-6 text-center">
+      <div className="relative flex flex-col items-center gap-4 px-6 py-8 text-center">
         <span className="grid h-14 w-14 place-items-center rounded-2xl bg-cream text-pine shadow-soft">
           <Icon name="pin" size={28} />
         </span>
-        <p className="font-bold text-pine">{clinic.addressShort}</p>
+        <div className="space-y-2">
+          {clinics.map((c) => (
+            <p key={c.key} className="font-bold text-pine">
+              {c.addressShort}
+            </p>
+          ))}
+        </div>
         <p className="text-sm text-pine/70">
           سيتم إضافة خريطة الموقع التفاعلية قريبًا
         </p>

@@ -62,17 +62,12 @@ export type Testimonial = {
   image?: string;
 };
 
-export type SuccessStory = {
-  title: string;
-  summary: string;
-  treatment: string;
-  hasVideo?: boolean;
-};
-
 export type VideoItem = {
   title: string;
   topic: string;
   url: string;
+  /** Poster frame pulled from the reel; shown as the card thumbnail. */
+  poster?: string;
 };
 
 export type ArticleBlock =
