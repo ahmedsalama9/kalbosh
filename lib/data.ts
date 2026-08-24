@@ -2,8 +2,8 @@ import type {
   FAQ,
   Feature,
   JourneyStep,
+  Review,
   Service,
-  Testimonial,
   VideoItem,
 } from "./types";
 
@@ -541,29 +541,84 @@ export const faqs: FAQ[] = [
 ];
 
 /* ============================================================
-   Testimonials (placeholder — CMS-ready)
+   Reviews — public Facebook recommendations, transcribed verbatim.
+   Each one keeps a link to its original screenshot for verification.
    ============================================================ */
 
-export const testimonials: Testimonial[] = [
+export const reviews: Review[] = [
   {
-    name: "أم لأول مرة",
-    text: "أول حاجة حسيت بيها إن الدكتور سمعني كويس وشرح لي حالتي بهدوء، ماحسّنيش إني رقم في العيادة.",
-    treatment: "علاج تأخر الحمل",
+    name: "Mohamed Alkolaly",
+    date: "25 نوفمبر 2019",
+    text: "من افضل الأطباء علما وخلقا",
+    screenshot: "/images/reviews/1.jpeg",
+    width: 1280,
+    height: 660,
+    featured: true,
   },
   {
-    name: "زوجان بعد سنوات انتظار",
-    text: "كنا فاكرين إن مفيش قدامنا غير الحقن المجهري، لكن التقييم وضّح إن فيه خطوات أبسط ممكن نبدأ بيها.",
-    treatment: "تقييم وتشخيص",
+    name: "Samir Ghoraba",
+    date: "25 نوفمبر 2019",
+    text: "من افضل اطباء امراض النساء و التوليد، خلق و علم، مثل اعلى في المهارة",
+    screenshot: "/images/reviews/2.jpeg",
+    width: 1280,
+    height: 870,
   },
   {
-    name: "بعد محاولة سابقة",
-    text: "بعد تجربة ماكملتش، الدكتور راجع كل التفاصيل معانا وشرح الخطة الجديدة خطوة بخطوة.",
-    treatment: "متابعة الحقن المجهري",
+    name: "Hend Ahmed",
+    date: "16 فبراير 2020",
+    text: "احسن دكتور اتعاملت معاه، ذوق واخلاق وعلم، وبيدي كل الحالات حقها وزياده، وكفايه الراحة النفسيه. ربنا يباركله ويارب ف نجاح وتفوق دايماً",
+    screenshot: "/images/reviews/3.jpeg",
+    width: 1280,
+    height: 801,
   },
   {
-    name: "حالة تكيس مبايض",
-    text: "الشرح كان واضح والمتابعة منتظمة، وحسيت إن فيه خطة مبنية على حالتي أنا مش على أي حد.",
-    treatment: "علاج ضعف التبويض",
+    name: "Aya Elgerby",
+    date: "12 يناير 2020",
+    text: "طبيب ذو اخلاق و كفء و يراعي الله والناس ف عمله، من أكفأ أطباء النساء ف مصر ربنا يكرمه",
+    screenshot: "/images/reviews/4.jpeg",
+    width: 1280,
+    height: 689,
+  },
+  {
+    name: "Moustafa Allam",
+    date: "30 ديسمبر 2022",
+    text: "د محمد نموذج للدكتور الشاطر مهنيا و اخلاقيا، ربنا يبارك في علمه و عمله",
+    screenshot: "/images/reviews/5.jpeg",
+    width: 1280,
+    height: 750,
+  },
+  {
+    name: "Mahitab Essam",
+    date: "11 ديسمبر 2022",
+    text: "بالتوفيق ل اشطر دكتور ف طنطا.. د محمد من الناس الخلوقه المجتهده المحترمه.. من نجاح ل نجاح أن شاء الله",
+    screenshot: "/images/reviews/6.jpeg",
+    width: 1280,
+    height: 857,
+  },
+  {
+    name: "Sherif Ahmed Kandil",
+    date: "13 مايو",
+    text: "دكتور محمد المحترم، قليل انك تلاقي دكتور زيه بيراعي ربنا في الحالات وشاطر جدا ماشاء الله، ربنا يزيدك تقدم ونجاح",
+    screenshot: "/images/reviews/7.jpeg",
+    width: 1280,
+    height: 803,
+  },
+  {
+    name: "Ahmed Essa",
+    date: "2 يونيو",
+    text: "قمة في الأخلاق و العلم و الإحترام، نفع الله بك و كتب الشفاء علي يديك",
+    screenshot: "/images/reviews/8.jpeg",
+    width: 1280,
+    height: 776,
+    featured: true,
+  },
+  {
+    name: "Mohamed Gamal Eissa",
+    date: "2 يونيو",
+    text: "مش لاقى كلام اوصفو بيه، بجد كفايه الوجه السمح والمقابله الطيبه، وانو بيعطيك امل كبير بعد ربنا",
+    screenshot: "/images/reviews/9.jpeg",
+    width: 1280,
+    height: 772,
   },
 ];
 
@@ -574,49 +629,49 @@ export const testimonials: Testimonial[] = [
 
 export const videos: VideoItem[] = [
   {
-    title: "هل كل تأخر حمل يحتاج حقن مجهري؟",
+    title: "متلازمة نقص الحيوانات المنوية وتجربة حقن مجهري ناجحة مع د/ محمد كلبوش",
     topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/1036259988818045?locale=ar_AR",
     poster: "/images/videos/1036259988818045.jpg",
   },
   {
-    title: "الخطوة الأولى في علاج تأخر الحمل",
-    topic: "التشخيص",
+    title: "هل كل حالة حقن مجهري لازم ترتاح 3 شهور بعد الحقن !؟",
+    topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/27624012037230595?locale=ar_AR",
     poster: "/images/videos/27624012037230595.jpg",
   },
   {
-    title: "تكيس المبايض وتأخر الحمل",
-    topic: "تكيس المبايض",
+    title: "تحليل واحد في نص التنشيط بيفرق في خطة الحقن كلها",
+    topic: "التنشيط",
     url: "https://www.facebook.com/reel/2634773970313141?locale=ar_AR",
     poster: "/images/videos/2634773970313141.jpg",
   },
   {
-    title: "ضعف التبويض وطرق التعامل معه",
-    topic: "التبويض",
+    title: "فترة انتظار نتيجة الحقن",
+    topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/27051603227795503?locale=ar_AR",
     poster: "/images/videos/27051603227795503.jpg",
   },
   {
-    title: "مخزون المبيض ومتى نقيسه",
-    topic: "مخزون المبيض",
+    title: "أعلى نسب نجاح للحقن المجهري مع د/ محمد كلبوش",
+    topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/2572420866473477?locale=ar_AR",
     poster: "/images/videos/2572420866473477.jpg",
   },
   {
-    title: "بطانة الرحم المهاجرة والخصوبة",
-    topic: "بطانة الرحم",
+    title: "الفرق بين الحقن المجهري و التلقيح الصناعي وأطفال الأنابيب",
+    topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/1884593508801743?locale=ar_AR",
     poster: "/images/videos/1884593508801743.jpg",
   },
   {
-    title: "تجميد البويضات والحفاظ على الخصوبة",
-    topic: "تجميد البويضات",
+    title: "ما قبل الحمل كيف تخططين للحمل ؟",
+    topic: "التخطيط للحمل",
     url: "https://www.facebook.com/reel/862501359633325?locale=ar_AR",
     poster: "/images/videos/862501359633325.jpg",
   },
   {
-    title: "أسباب فشل الحقن المجهري",
+    title: "امتى نلجأ للحقن المجهري كعلاج لتأخر الحمل ؟",
     topic: "الحقن المجهري",
     url: "https://www.facebook.com/reel/1328072741656469?locale=ar_AR",
     poster: "/images/videos/1328072741656469.jpg",

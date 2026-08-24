@@ -246,6 +246,17 @@
     );
     background-size: 22px 22px;
   }
+
+  /* Masonry wall — CSS columns; children must not split across a column. */
+  .wall {
+    column-gap: 1.25rem;
+  }
+  .wall > * {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

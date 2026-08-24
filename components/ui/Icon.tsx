@@ -45,6 +45,7 @@ export type IconGlyph =
   | "quote"
   | "check"
   | "play"
+  | "expand"
   | "spark";
 
 const paths: Record<IconGlyph, React.ReactNode> = {
@@ -233,6 +234,12 @@ const paths: Record<IconGlyph, React.ReactNode> = {
   ),
   check: <path d="m5 12 4.5 4.5L19 7" />,
   play: <path d="M8 5.5v13l11-6.5z" />,
+  expand: (
+    <>
+      <path d="M14 4h6v6M10 20H4v-6" />
+      <path d="M20 4l-7 7M4 20l7-7" />
+    </>
+  ),
   spark: <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" />,
 };
 

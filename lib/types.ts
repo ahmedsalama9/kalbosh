@@ -55,11 +55,20 @@ export type FAQ = {
   answer: string;
 };
 
-export type Testimonial = {
+/**
+ * A public Facebook recommendation. The words are transcribed verbatim; the
+ * original screenshot stays reachable so every quote can be verified.
+ */
+export type Review = {
   name: string;
+  /** Display date as Facebook showed it — year omitted when it was the current year. */
+  date: string;
   text: string;
-  treatment?: string;
-  image?: string;
+  screenshot: string;
+  width: number;
+  height: number;
+  /** Set on the two shortest, most absolute quotes — they anchor the wall. */
+  featured?: boolean;
 };
 
 export type VideoItem = {

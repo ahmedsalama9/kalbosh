@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { TestimonialSlider } from "@/components/testimonials/TestimonialSlider";
+import { ReviewWall } from "@/components/testimonials/ReviewWall";
 
 export function TestimonialsSection() {
   return (
@@ -9,10 +9,11 @@ export function TestimonialsSection() {
       <Container>
         <SectionHeading
           eyebrow="آراء المرضى"
-          title="لأن تجربة المريض أهم من أي كلام"
+          title="تسع ترشيحات مستقلة، تقول الشيء نفسه"
+          subtitle="عِلم وخُلق — دي الحاجتين اللي بتتكرر في كل ترشيح تقريبًا. اضغطي أي واحد تشوفي لقطته الأصلية على فيسبوك."
         />
         <Reveal className="mt-12">
-          <TestimonialSlider />
+          <ReviewWall />
         </Reveal>
       </Container>
     </section>
