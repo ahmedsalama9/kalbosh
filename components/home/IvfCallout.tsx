@@ -26,7 +26,7 @@ export function IvfCallout() {
             <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-2 lg:gap-14 lg:p-14">
               {/* Statement */}
               <div>
-                <h2 className="text-[1.7rem] font-bold leading-snug sm:text-[2.1rem]">
+                <h2 className="text-[1.7rem] font-bold leading-snug text-cream sm:text-[2.1rem]">
                   هل الحقن المجهري هو الحل لكل حالات تأخر الحمل؟
                 </h2>
                 <p className="mt-6 flex items-baseline gap-3">

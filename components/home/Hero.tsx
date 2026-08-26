@@ -30,7 +30,7 @@ export function Hero() {
 
       <Container className="relative grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-20">
         {/* Copy */}
-        <div className="max-w-xl">
+        <div className="order-2 max-w-xl lg:order-1">
           <Reveal>
             <span className="eyebrow">رحلتك تبدأ من هنا</span>
             <h1 className="mt-5 text-[2.15rem] font-bold leading-[1.15] sm:text-[2.7rem] lg:text-[3.15rem]">
@@ -98,8 +98,11 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* Portrait */}
-        <Reveal delay={120} className="relative mx-auto w-full max-w-md lg:mx-0">
+        {/* Portrait — shown first on mobile so the visitor immediately sees who they're booking with */}
+        <Reveal
+          delay={120}
+          className="order-1 relative mx-auto w-full max-w-md lg:order-2 lg:mx-0"
+        >
           <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-iris-soft via-pine-soft to-honey-soft/70" />
           <Figure
             src="/images/doctor/hero.webp"
